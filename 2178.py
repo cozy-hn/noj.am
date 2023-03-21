@@ -11,12 +11,9 @@ dy=[0,1,0,-1]
 while dq:
     out=dq.popleft()
     for i in range(4):
-        if (out[0]+dx[i] >=0 and out[0]+dx[i] <= M-1) and (out[1]+dy[i] >=0 and out[1]+dy[i] <= N-1):
-            if li[out[1]+dy[i]][out[0]+dx[i]]==1:
-                li[out[1]+dy[i]][out[0]+dx[i]]=li[out[1]][out[0]]+1
-                dq.append([out[0]+dx[i],out[1]+dy[i]])
-            elif li[out[1]+dy[i]][out[0]+dx[i]] >1:
-                li[out[1]+dy[i]][out[0]+dx[i]]=min(li[out[1]][out[0]]+1,li[out[1]+dy[i]][out[0]+dx[i]])
-                if li[out[1]][out[0]]+1 < li[out[1]+dy[i]][out[0]+dx[i]]:
-                    dq.append([out[0]+dx[i], out[1]+dy[i]])
+        nx=out[0]+dx[i]
+        ny=out[1]+dy[i]
+        if (nx>=0 and nx<= M-1) and (ny>=0 and ny<= N-1) and li[ny][nx] ==1:
+            li[ny][nx]=li[out[1]][out[0]]+1
+            dq.append([nx,ny])
 print(li[N-1][M-1])
