@@ -9,7 +9,7 @@ if f(n0)>=0 and c>=a2:
             print(0)
     elif a1/(2*(c-a2)) <= n0:
             print(1)
-    elif f(a1/(2*(c-a2))) >= 0:
+    elif f(a1/(2*(c-a2))) >= 0 :
         print(1)
     else:
         print(0)
