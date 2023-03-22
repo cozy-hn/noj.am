@@ -1,2 +1,3 @@
-str_="1"
-print(str_.split())
+import sys
+import sklearn
+print(sys.executable)
