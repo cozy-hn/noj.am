@@ -1,1 +1,1 @@
-a2*n0**2+a1*n0+a0<=c*n0**2 and 
+import re
