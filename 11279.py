@@ -6,7 +6,7 @@ for _ in range(int(input())):
     n=int(input())
     if n!=0:
         heappush(heap,(-n,n))
-    elif len(heap):
+    elif heap:
         print(heappop(heap)[1])
     else:
         print(0)
