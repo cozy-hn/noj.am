@@ -1,9 +1,2 @@
-import sys
-from queue import PriorityQueue
-
-input=lambda:sys.stdin.readline().rstrip()
-
-q=PriorityQueue()
-q.put(1)
-print(q.get())
-q.get()
+a,b,c=map(int,input().split())
+print(int((a+1)*(b+1)/(c+1)-1))
