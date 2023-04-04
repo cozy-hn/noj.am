@@ -19,7 +19,5 @@ for j in range(N):
                     else:
                         s=0
                         break
-            # print(i,j)
-            # print("i+x,j+y,s,m",i+x,j+y,s,m)
             m=max(m,s)
 print(m)
