@@ -1,1 +1,2 @@
-import re
+import sys
+n=int()
