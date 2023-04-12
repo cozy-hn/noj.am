@@ -1,1 +1,1 @@
-    print(dq)
+ if ddBy<ddRy:
