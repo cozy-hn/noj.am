@@ -1,2 +1,1 @@
-import sys
-n=int()
+    print(dq)
