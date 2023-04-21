@@ -1,33 +1,48 @@
 N=int(input())
-li=list(map(int,input().split()))
-dp=[10**6]*(N+1)
-if N>=1:
-    dp[1]=li[0]*3
-if N>=2:
-    dp[2]=min(dp[0]+li[1]*3,min(li[0],li[1])*5+abs(li[0]-li[1])*3)
-if N>=3:
-    dp[0]=0
-    for i in range(2,N):
-        tmp=min(li[i-2],li[i-1],li[i])
-        if tmp==li[i-2]:
-            if li[i-1]>li[i] and i!=N-1 and li[i+1]>0:
-                if li[i-2]<=li[i-1]-li[i]:
-                    tmp=li[i-2]*5+min(li[i-1]-li[i-2],li[i])*5+abs(li[i-1]-li[i-2]-li[i])*3
-                else:
-                    tmp=(li[i-1]-li[i])*5+(li[i-2]-li[i-1]+li[i])*7+(li[i]-li[i-2])*5
+ip=list(map(int,input().split()))
+ans=0
+for i in range(N-2):
+    while ip[i]!=0:
+        if i==N-3 and ip[i+1]>0 and ip[i+2]>0:
+            tmp=min(ip[i],ip[i+1],ip[i+2])
+            ans+=tmp*7
+            ip[i]-=tmp
+            ip[i+1]-=tmp
+            ip[i+2]-=tmp
+        elif ip[i+1]>0 and ip[i+2]>0:
+            if ip[i+3]==0:
+                tmp=min(ip[i],ip[i+1],ip[i+2])
+                ans+=tmp*7
+                ip[i]-=tmp
+                ip[i+1]-=tmp
+                ip[i+2]-=tmp
+            elif ip[i+1]>ip[i+2]:
+                tmp=min(ip[i],ip[i+1]-ip[i+2])
+                ans+=tmp*5
+                ip[i]-=tmp
+                ip[i+1]-=tmp
             else:
-                tmp=li[i-2]*7+(min(li[i-1],li[i])-li[i-2])*5+abs(li[i-1]-li[i])*3
-        elif tmp==li[i-1]:
-            tmp=li[i-1]*7+li[i-2]*3+li[i]*3
+                tmp=min(ip[i],ip[i+1],ip[i+2])
+                ans+=tmp*7
+                ip[i]-=tmp
+                ip[i+1]-=tmp
+                ip[i+2]-=tmp
+        elif ip[i+1]>0:
+            tmp=min(ip[i],ip[i+1])
+            ans+=tmp*5
+            ip[i]-=tmp
+            ip[i+1]-=tmp
         else:
-            if li[i-1]>li[i] and i!=N-1 and li[i+1]>0:
-                if li[i-2]<=li[i-1]-li[i]:
-                    tmp=li[i-2]*5+min(li[i-1]-li[i-2],li[i])*5+abs(li[i-1]-li[i-2]-li[i])*3
-                else:
-                    tmp=(li[i-1]-li[i])*5+(li[i-2]-li[i-1]+li[i])*7+(li[i]-li[i-2])*5
-            else:
-                tmp=li[i]*7+(min(li[i-1],li[i-2])-li[i])*5+abs(li[i-1]-li[i-2])*3
-        dp[i+1]=min(dp[i]+li[i]*3,dp[i-1]+min(li[i-1],li[i])*5+abs(li[i-1]-li[i])*3,dp[i-2]+tmp)
-# print(dp)
-# print(li)
-print(dp[-1])
+            ans+=ip[i]*3
+            ip[i]=0
+while ip[N-2]!=0:
+    if ip[N-1]>0:
+        tmp=min(ip[N-2],ip[N-1])
+        ans+=tmp*5
+        ip[N-2]-=tmp
+        ip[N-1]-=tmp
+    else:
+        ans+=ip[N-2]*3
+        ip[N-2]=0
+ans+=ip[N-1]*3
+print(ans)
