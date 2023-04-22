@@ -37,11 +37,10 @@ for i in range(6):
             visit[i][j],visit[i][j+1],visit[i][j+2],visit[i+1][j+2],visit[i+1][j+3],visit[i+1][j+4]='D','R','U','F','L','B'
             flag=False
             break
-        if j!=5 and i<=1:
-            if graph[i][j]!=0 and graph[i+1][j]!=0 and graph[i+2][j]!=0 and graph[i+2][j+1]!=0 and graph[i+3][j+1]!=0 and graph[i+4][j+1]!=0:
+        elif j!=5 and i<=1 and graph[i][j]!=0 and graph[i+1][j]!=0 and graph[i+2][j]!=0 and graph[i+2][j+1]!=0 and graph[i+3][j+1]!=0 and graph[i+4][j+1]!=0:
                 visit[i][j],visit[i+1][j],visit[i+2][j],visit[i+2][j+1],visit[i+3][j+1],visit[i+4][j+1]='D','R','U','B','L','F'
                 flag=False
-            elif graph[i][j]!=0 and graph[i+1][j]!=0 and graph[i+2][j]!=0 and graph[i+2][j-1]!=0 and graph[i+3][j-1]!=0 and graph[i+4][j-1]!=0:
+        elif j!=0 and i<=1 and graph[i][j]!=0 and graph[i+1][j]!=0 and graph[i+2][j]!=0 and graph[i+2][j-1]!=0 and graph[i+3][j-1]!=0 and graph[i+4][j-1]!=0:
                 visit[i][j],visit[i+1][j],visit[i+2][j],visit[i+2][j-1],visit[i+3][j-1],visit[i+4][j-1]='D','R','U','F','L','B'
                 flag=False
         if graph[i][j]!=0 and j<=3 and (i!=0 and i!=5) and (graph[i][j+1]!=0 and graph[i][j+2]!=0):
