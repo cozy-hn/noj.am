@@ -12,12 +12,12 @@ def prim(weight):
     dist = [INF for _ in range(V_NUM)]  
     selected = [False for _ in range(V_NUM)]
     dist[0] = 0  
-    mst=[0]*V_NUM
+    mst=0
     for i in range(V_NUM):  
         unselected = [idx for idx, val in enumerate(selected) if not val]
         u = min(unselected, key=lambda x: dist[x])
-        selected[u] = True
-        mst[i]=u  
+        selected[u] = True 
+        mst+=dist[u]
     
         for v in range(V_NUM):
             if weight[u][v] != INF:
