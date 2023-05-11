@@ -1,5 +1,5 @@
 git add .
-echo "Enter the commit message:"
-read commit_message
+printf "Enter the commit message: "
+read -r commit_message
 git commit -m "$commit_message"
 git push
