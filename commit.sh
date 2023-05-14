@@ -1,3 +1,4 @@
+git pull
 git add .
 git status
 printf "Enter the commit message: "
