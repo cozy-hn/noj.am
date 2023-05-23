@@ -10,13 +10,14 @@ for i in range(N-1):
     graph[a].append((b,c))
     graph[b].append((a,c))
 
-visited=[False]*(N+1)
-cost=[0]*(N+1)
 
 def bfs(idx):
+    cost=[0]*(N+1)
+    visited=[False]*(N+1)
     visited[idx]=True
     ans=0
     dq=deque([idx])
+    node=idx
     while dq:
         now=dq.popleft()
         for nxt,c in graph[now]:
@@ -25,12 +26,11 @@ def bfs(idx):
                 cost[nxt]=cost[now]+c
                 dq.append(nxt)
                 if len(graph[nxt])==1:
-                    ans=max(ans,cost[nxt])
-    return ans
+                    if cost[nxt]>=ans:
+                        ans=cost[nxt]
+                        node=nxt
+    return ans, node
 
-for i in range(1,N+1):
-    if len(graph[i])==1:
-        idx=i
-        break
-print(idx)
-print(bfs(idx))
+_,node=bfs(1)
+rtn,_=bfs(node)
+print(rtn)
