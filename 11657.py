@@ -24,4 +24,4 @@ city=[[] for i in range(N+1)]
 for _ in range(M):
     S,E,T=map(int,input().split())
     city[S].append((E,T))
-BellmanFord(city,1)
+BellmanFord(city,1) 
