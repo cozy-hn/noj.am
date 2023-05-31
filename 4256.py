@@ -19,5 +19,5 @@ for _ in range(int(input())):
     in_idx=[0]*(N+1)
     for i in range(N):
         in_idx[inorder[i]]=i
-    postorder(0,len(preorder)-1,0,len(preorder)-1)
+    postorder(0,N-1,0,N-1)
     print()
