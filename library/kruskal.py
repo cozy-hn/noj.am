@@ -15,7 +15,7 @@ def union(x,y):
     if x!=y:
         parent[y]=x
 
-def kruscal(graph):
+def kruskal(graph):
     mst,line=0,0
     for a,b,c in graph:
         if find(a)!=find(b):
@@ -30,4 +30,4 @@ V,E=map(int,input().split())
 graph=[tuple(map(int,input().split())) for _ in range(E)]
 parent=[i for i in range(V+1)]
 graph.sort(key=lambda x:x[2])
-print(kruscal(graph))
+print(kruskal(graph))
